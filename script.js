@@ -10,12 +10,15 @@ const resetButton = document.getElementById('reset');
 function updateTimerDisplay() {
   const minutes = Math.floor(timeRemaining / 60);
   const seconds = timeRemaining % 60;
-  timerDisplay.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  const timeText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+  timerDisplay.innerText = timeText;
+  document.title = "Timer: " + timeText;
 }
+//pad start so it reads 02:03 and not 2:3 even tho that's what it would actually be
 
 function startTimer() {
   if (!isRunning) {
-    timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() { //anonymous function
       if (timeRemaining > 0) {
         timeRemaining--;
         updateTimerDisplay();
@@ -23,7 +26,7 @@ function startTimer() {
         clearInterval(timerInterval);
         isRunning = false;
       }
-    }, 1000); //comment comment
+    }, 1000); //in milliseconds
     isRunning = true;
   }
 }
