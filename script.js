@@ -25,6 +25,7 @@ function startTimer() {
       } else {
         clearInterval(timerInterval);
         isRunning = false;
+        playSound();
       }
     }, 1000); //in milliseconds
     isRunning = true;
@@ -43,6 +44,11 @@ function resetTimer() {
   isRunning = false;
   timeRemaining = 25 * 60;
   updateTimerDisplay();
+}
+
+function playSound () {
+  let alarm = new Audio('alarm.mp3');
+  alarm.play();
 }
 
 startButton.addEventListener('click', startTimer);
