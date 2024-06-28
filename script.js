@@ -54,3 +54,14 @@ function playSound () {
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
+
+
+document.getElementById('newTask').addEventListener('click', function () {
+  let taskName = prompt('New task name: ');
+  if (taskName) {
+    let taskElement = document.createElement('div');
+    taskElement.textContent = taskName;
+    taskElement.className = 'task-item';
+    document.getElementById('taskList').appendChild(taskElement);
+  }
+} );
